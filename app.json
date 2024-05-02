@@ -1,0 +1,102 @@
+{
+    "name": "All-Movie-Finder-Bot",
+    "description": "All-Movie-Finder-Bot",
+    "keywords": [
+        "telegram"
+    ],
+    "website": "https://github.com/kevinnadar22/All-Movie-Finder-Bot",
+    "repository": "https://github.com/kevinnadar22/All-Movie-Finder-Bot",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Your bot token",
+            "value": ""
+        },
+        "API_ID": {
+            "description": "Get this value from https://my.telegram.org",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Get this value from https://my.telegram.org",
+            "value": ""
+        },
+        "MONGODB": {
+            "description": "Your MongoDB connection URI",
+            "value": ""
+        },
+        "DATABASE_NAME": {
+            "description": "Your MongoDB DB Name",
+            "value": ""
+        },
+        "COLLECTION_NAME": {
+            "description": "Your MongoDB Collection Name",
+            "value": ""
+        },
+        "ADMINS": {
+            "description": "Your Telegram ID and ID of Users you want add as Admin. Separate each ID by comma.",
+            "value": ""
+        },
+
+        "UPDATE_CHANNEL": {
+            "description": "Your telegram channel username without @ to add force sub. Leave it empty if you don't wanna add. Example: t2linkss",
+            "value": "",
+            "required": false
+        },
+        "OWNER_ID":{
+            "description": "Get your user id from https://telegram.dog/MissRose_bot",
+            "value": ""
+        },
+        "RESULTS_COUNT":{
+            "description": "Number of results retrieved from DB at a time, Maximum: 20",
+            "value": "20",
+            "required": false
+        },
+        "AUTO_DELETE":{
+            "description": "Set to true to automatically delete messages from the chat",
+            "value": "True",
+            "required": false
+        },
+        "AUTO_DELETE_TIME":{
+            "description": "Duration of time in seconds to delete messages from the chat automatically. Default:300 seconds",
+            "value": "300",
+            "required": false
+        },
+        "WELCOME_IMAGE":{
+            "description": "Set the default image for start message",
+            "value": "",
+            "required": false
+        },
+
+        "RESULTS_IMAGE":{
+            "description": "Set the default image for results",
+            "value": "",
+            "required": false
+        },
+        "CHANNELS":{
+            "description": "Set True if you want to save posts from channels",
+            "value": "",
+            "required": false
+        },
+        "CHANNELS_LIST":{
+            "description": "List of your channel id to save posts to db. Separate each by space. Ex: -100xx -100YYY ",
+            "value": "",
+            "required": false
+        },
+        "FORCESUB":{
+            "description": "Set true if you want to force subscriptions.",
+            "value": "False",
+            "required": false
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "Eco"
+        }
+    }
+}
