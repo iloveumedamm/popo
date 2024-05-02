@@ -60,13 +60,12 @@ async def start_message(c,m):
     else:
         if "group_link" in m.text:
             if not await groups_lele(c, m):
-             return 
-            else:
-                pass
+             return
 
 
-    if FORCESUB == 'True' and not await forcesub_handler(c, m):
-        return
+   # if FORCESUB == 'True' and not await forcesub_handler(c, m):
+    #    return
+    
     group_id =  m.command[1].split("_")[2] if len(m.command) > 1 else m.chat.id
     group_id = int(group_id)
     group_config = await group_db.find_chat_without_adding(group_id)
@@ -95,8 +94,7 @@ async def start_message(c,m):
         return
     
     verify_status = await get_verify_status(m.from_user.id)
-    if not await db.has_premium_access(m.from_user.id):
-        if IS_VERIFY and not verify_status['is_verified']:
+    if IS_VERIFY and not verify_status['is_verified']:
             token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
             await update_verify_status(m.from_user.id, verify_token=token, link="" if mc == 'inline_verify' else mc)
             link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://t.me/{temp.U_NAME}?start=verify_{token}')
