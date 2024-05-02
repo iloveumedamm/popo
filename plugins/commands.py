@@ -66,10 +66,7 @@ async def start_message(c,m):
    # if FORCESUB == 'True' and not await forcesub_handler(c, m):
     #    return
     
-    group_id =  m.command[1].split("_")[2] if len(m.command) > 1 else m.chat.id
-    group_id = int(group_id)
-    group_config = await group_db.find_chat_without_adding(group_id)
-    is_premium = (await group_db.is_group_verified(group_id)) or not PAID
+  # is_premium = (await group_db.is_group_verified(group_id)) or not PAID
 
 #API_KEY = {user["shortener_api"] if user["shortener_api"] else Telegram.API_KEY
     verify_status = await get_verify_status(m.from_user.id)
@@ -97,7 +94,7 @@ async def start_message(c,m):
     if IS_VERIFY and not verify_status['is_verified']:
             token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
             await update_verify_status(m.from_user.id, verify_token=token, link="" if mc == 'inline_verify' else mc)
-            link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://t.me/{temp.U_NAME}?start=verify_{token}')
+            link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://t.me/{USERNAME}?start=verify_{token}')
             btn = [[
                 InlineKeyboardButton("🧿 Verify 🧿", url=link)
             ],[
@@ -108,6 +105,11 @@ async def start_message(c,m):
     else:
         pass        
 
+        group_id =  m.command[1].split("_")[2] if len(m.command) > 1 else m.chat.id
+        group_id = int(group_id)
+        group_config = await group_db.find_chat_without_adding(group_id)
+        
+        is_premium = (await group_db.is_group_verified(group_id)) or not PAID
         shortener_domain = group_config['shortener_domain'] if group_config['shortener_domain'] else SHORTENER_WEBSITE
         shortener_api = group_config['shortener_api'] if group_config['shortener_api'] else SHORTENER_API
 

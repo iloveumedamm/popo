@@ -28,7 +28,7 @@ FORCESUB = os.environ.get('FORCESUB', "True")
 FILMS_LINK = os.environ.get('FILMS_LINK', 'https://t.me/HA_Films_World')
 # Other Settings
 UPDATE_CHANNEL =  int(os.environ.get('UPDATE_CHANNEL', '-1002133196746'))
-USERNAME = os.environ.get('USERNAME', 'bot_channel_011')
+USERNAME = os.environ.get('USERNAME', 'unratedmovbot')
 HOWTO = os.environ.get('HOWTO', 'MdiskShortner_Link')
 RESULTS_COUNT = int(os.environ.get('RESULT_COUNTS', 10))
 AUTO_DELETE = os.environ.get('AUTO_DELETE', True)
