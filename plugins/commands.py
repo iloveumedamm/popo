@@ -61,6 +61,8 @@ async def start_message(c,m):
         if "group_link" in m.text:
             if not await groups_lele(c, m):
              return 
+            else:
+                pass
 
 
     if FORCESUB == 'True' and not await forcesub_handler(c, m):

@@ -118,11 +118,10 @@ class GroupDatabase:
 group_db = GroupDatabase(MONGODB, DATABASE_NAME)
 
 ########################################################
+client = AsyncIOMotorClient(MONGODB)
+mydb = client[DATABASE_NAME]
 
 class Database:
-    client = AsyncIOMotorClient(MONGODB)
-    mydb = client[DATABASE_NAME]
-  
     default_verify = {
     'is_verified': False,
     'verified_time': 0,
