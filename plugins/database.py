@@ -120,12 +120,20 @@ group_db = GroupDatabase(MONGODB, DATABASE_NAME)
 ########################################################
 
 class Database:
+    client = AsyncIOMotorClient(MONGODB)
+    mydb = client[DATABASE_NAME]
+  
     default_verify = {
     'is_verified': False,
     'verified_time': 0,
     'verify_token': "",
     'link': ""
     }
+
+    def __init__(self):
+        self.col = mydb.Users
+        self.grp = mydb.Groups
+        self.users = mydb.uersz
        
     async def get_verify_status(self, user_id):
         user = await self.col.find_one({'id':int(user_id)})
